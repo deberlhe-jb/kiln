@@ -60,8 +60,7 @@ public struct Theme: Sendable {
     public var palette: Palette
     /// Path (relative to the content directory's assets) to a logo image.
     public var logo: String?
-    /// Path to a favicon image.
-    public var favicon: String?
+    public var favicons: [FavIcon]
     public var fonts: Fonts?
     public var features: Set<ThemeFeature>
 
@@ -70,7 +69,7 @@ public struct Theme: Sendable {
         sharedLayers: [URL] = [],
         palette: Palette = Palette(),
         logo: String? = nil,
-        favicon: String? = nil,
+        favicons: [FavIcon] = [],
         fonts: Fonts? = nil,
         features: Set<ThemeFeature> = [.searchSuggest, .searchHighlight]
     ) {
@@ -78,7 +77,7 @@ public struct Theme: Sendable {
         self.sharedLayers = sharedLayers
         self.palette = palette
         self.logo = logo
-        self.favicon = favicon
+        self.favicons = favicons
         self.fonts = fonts
         self.features = features
     }
@@ -88,11 +87,11 @@ public struct Theme: Sendable {
         sharedLayers: [URL] = [],
         palette: Palette = Palette(),
         logo: String? = nil,
-        favicon: String? = nil,
+        favicons: [FavIcon] = [],
         fonts: Fonts? = nil,
         features: Set<ThemeFeature> = [.searchSuggest, .searchHighlight]
     ) -> Theme {
-        Theme(source: .default, sharedLayers: sharedLayers, palette: palette, logo: logo, favicon: favicon, fonts: fonts, features: features)
+        Theme(source: .default, sharedLayers: sharedLayers, palette: palette, logo: logo, favicons: favicons, fonts: fonts, features: features)
     }
 
     /// A theme that overrides the bundled default with your own templates/assets.
@@ -101,10 +100,10 @@ public struct Theme: Sendable {
         sharedLayers: [URL] = [],
         palette: Palette = Palette(),
         logo: String? = nil,
-        favicon: String? = nil,
+        favicons: [FavIcon] = [],
         fonts: Fonts? = nil,
         features: Set<ThemeFeature> = [.searchSuggest, .searchHighlight]
     ) -> Theme {
-        Theme(source: .custom(directory: directory), sharedLayers: sharedLayers, palette: palette, logo: logo, favicon: favicon, fonts: fonts, features: features)
+        Theme(source: .custom(directory: directory), sharedLayers: sharedLayers, palette: palette, logo: logo, favicons: favicons, fonts: fonts, features: features)
     }
 }
