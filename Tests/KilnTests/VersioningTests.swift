@@ -83,7 +83,7 @@ struct VersioningTests {
 
         let site = KilnSite(
             name: "V", url: "https://v.example.com",
-            theme: .custom(directory: theme.path),
+            theme: .custom(directory: theme.path, favicons: []),
             versions: [
                 DocVersion(
                     id: "main", name: "Main", isDefault: true, contentDirectory: "main",
